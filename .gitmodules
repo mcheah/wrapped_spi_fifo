@@ -1,0 +1,3 @@
+[submodule "spi_fifo"]
+	path = spi_fifo
+	url = git@github.com:mcheah/spi_fifo
