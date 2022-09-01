@@ -5,10 +5,10 @@ mode prove
 smtbmc
 
 [script]
-read -formal wrapper.v rest of your source files.v
-prep -top wrapped_project
+#read -formal wrapper.v spi_fifo/rtl/spi_fifo_top.v
+#prep -top wrapped_project
 
 [files]
 wrapper.v
 properties.v
-rest of your source files.v
+spi_fifo/rtl/spi_fifo_top.v

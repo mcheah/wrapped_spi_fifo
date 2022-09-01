@@ -1,26 +1,26 @@
 --- 
 # information
 project: 
-  title: "title"
-  description: "description"
+  title: "spi_fifo"
+  description: "sample spi interface with fifo and crc"
   picture: docs/empty.png
-  author: "Author"
-  license: LICENSE
+  author: "Mickey"
+  license: GPLv3
 
 # optional interfaces you want to use: gpio, la1, la2, la3, irq, clk2, wishbone & openram
-interfaces: ['la1', 'gpio']
+interfaces: ['la1', 'gpio', 'wishbone']
 
 # test within caravel
 caravel_test:
   recipe: "coco_test"
-  directory: "caravel_test"
-  id: 1
-  module_name: "wrapped_project"
+  directory: "caravel_spi_fifo"
+  id: 6
+  module_name: "wrapped_spi_fifo"
 
 # module test
 module_test:
   recipe: "all" 
-  directory: "project directory"
+  directory: "spi_fifo"
   makefile: "Makefile"
 
 # run the wrapper formal proof
@@ -35,11 +35,17 @@ openlane:
 # source required for various configs and module instantiation
 source:
     - wrapper.v
-    - other source files here
+    - spi_fifo/rtl/CLK_Div.v
+    - spi_fifo/rtl/fifo.v
+    - spi_fifo/rtl/fifo_ctrl.v
+    - spi_fifo/rtl/regbank.v
+    - spi_fifo/rtl/spi.v
+    - spi_fifo/rtl/spi_fifo_top.v
+    - spi_fifo/rtl/wb_slave.v
 
 # gds - check nothing on metal 5, DRC & LVS
 final:
   directory: "final"
-  gds_filename: "gds/project.gds"
-  lvs_filename: "verilog/gl/project.v"
-  lef_filename: "lef/project.lef"
+  gds_filename: "gds/wrapped_spi_fifo.gds"
+  lvs_filename: "verilog/gl/wrapped_spi_fifo.v"
+  lef_filename: "lef/wrapped_spi_fifo.lef"

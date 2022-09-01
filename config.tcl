@@ -2,11 +2,22 @@
 set script_dir [file dirname [file normalize [info script]]]
 
 # name of your project, should also match the name of the top module
-set ::env(DESIGN_NAME) project_name
+set ::env(DESIGN_NAME) wrapped_spi_fifo
+
+# save some time
+set ::env(RUN_KLAYOUT_XOR) 0
+set ::env(RUN_KLAYOUT_DRC) 0
 
 # add your source files here
 set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/wrapper.v \
-    $::env(DESIGN_DIR)/other source files.v"
+    $::env(DESIGN_DIR)/spi_fifo/rtl/CLK_Div.v \
+    $::env(DESIGN_DIR)/spi_fifo/rtl/crc16.v \
+    $::env(DESIGN_DIR)/spi_fifo/rtl/fifo.v \
+    $::env(DESIGN_DIR)/spi_fifo/rtl/fifo_ctrl.v \
+    $::env(DESIGN_DIR)/spi_fifo/rtl/regbank.v \
+    $::env(DESIGN_DIR)/spi_fifo/rtl/spi.v \
+    $::env(DESIGN_DIR)/spi_fifo/rtl/spi_fifo_top.v \
+    $::env(DESIGN_DIR)/spi_fifo/rtl/wb_slave.v \
 
 # target density, change this if you can't get your design to fit
 set ::env(PL_TARGET_DENSITY) 0.4

@@ -3,7 +3,9 @@ from cocotb.clock import Clock
 from cocotb.triggers import RisingEdge, FallingEdge, ClockCycles, with_timeout
 
 @cocotb.test()
+
 async def test_start(dut):
+"""
     clock = Clock(dut.clk, 25, units="ns") # 40M
     cocotb.fork(clock.start())
     
@@ -34,3 +36,4 @@ async def test_start(dut):
     # assert something
     assert(0 == 25)
 
+"""
